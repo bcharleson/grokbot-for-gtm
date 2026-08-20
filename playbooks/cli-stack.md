@@ -43,13 +43,47 @@ Playbook: [03-data-sources.md](03-data-sources.md)
 
 ## Meetings
 
-Links go in **replies**, not email 1. Use the tool named in `company.md`.
+Links go in **replies**, not email 1. Use the scheduler in `company.md`.
 
-| Job | npm | bin | Health | Notes |
-|-----|-----|-----|--------|--------|
-| Booking | `calendly-cli` | `calendly` | `calendly users me` | Env `CALENDLY_TOKEN`. Event types / availability / invitees. |
-| Booking | `calcom-cli` | `calcom` | `calcom profile me` | Env `CAL_API_KEY`. Yes — this CLI exists (`calcom-cli` on npm). |
-| Booking | `@topcal/cli` | `topcal` | `topcal auth status --json` | Device auth (`topcal auth register`). Public URLs `https://topcal.ai/{workspace}/{username}/{eventSlug}` — unauthenticated slot GET in playbook 06. |
+### topcal — agent booking
+
+npm `@topcal/cli`, bin `topcal`, health `topcal auth status --json`.
+
+topcal is a scheduler built so **an agent can finish the booking**, not only paste a grid for a human to click.
+
+Two jobs. Do not mix them.
+
+**1. Guest (most common in this motion).** The operator's public booker is `https://topcal.ai/{workspace}/{username}/{eventSlug}` (stay on `topcal.ai`, do not rewrite to `app.topcal.ai`). You are the *invitee's* agent. No host API key.
+
+```
+GET https://topcal.ai/api/v1/public/{workspace}/{username}
+GET https://topcal.ai/api/v1/public/{workspace}/{username}/{eventSlug}/slots?timezone={invitee IANA}
+GET .../otp?email={invitee email}&startAt={slot UTC}&timezone={IANA}&name={invitee name}
+GET {confirmUrl}&code={digits the invitee reads from email}
+```
+
+Show 3–5 slots; do not pick unless they named a window. OTP goes to the **invitee's** email — never invent the code. Report `booking.startAt`, `booking.endAt`, `booking.joinUrl` if present.
+
+Public MCP (no auth): `https://topcal.ai/api/mcp/public/mcp`. Full procedure: playbook 06 and `https://topcal.ai/skill/SKILL.md`.
+
+**2. Host.** Operator wants their own booker. Device auth, no pasted API key:
+
+```bash
+npm i -g @topcal/cli
+topcal auth register --wait auto
+topcal auth status --json
+topcal calendars connect --provider google   # or microsoft
+topcal calendars status --json
+```
+
+Credentials: `~/.topcal/config.json` (0600). Then share `https://topcal.ai/{workspace}/{username}/{eventSlug}` as the reply CTA.
+
+### Other schedulers (CLI only)
+
+| Job | npm | bin | Health |
+|-----|-----|-----|--------|
+| Calendly | `calendly-cli` | `calendly` | `calendly users me` (`CALENDLY_TOKEN`) |
+| Cal.com | `calcom-cli` | `calcom` | `calcom profile me` (`CAL_API_KEY`) |
 | Call notes | `fireflies-cli` | `fireflies` | |
 | Call notes | `otter-agent-cli` | `otter` | |
 | Meetings API | `zoom-agent-cli` | `zoom` | |

@@ -16,7 +16,7 @@ Closed sets (do not add a vendor they did not pick):
 
 - Send: Instantly, HeyReach, optionally EmailBison / Smartlead
 - List: file, gtm, prospeo, ocean, leadmagic, clay, seamless, trigify, contactout
-- Meetings: Calendly, Cal.com, topcal, or a pasted URL — replies only
+- Meetings: topcal (agent can complete the booking), Calendly, Cal.com, or a pasted URL — replies only
 - CRM: none or a row in `playbooks/cli-stack.md`
 
 If a field is unknown, write `unknown`. Empty proof means copy has no metric.

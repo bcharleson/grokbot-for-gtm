@@ -27,17 +27,37 @@ Do not argue. Do not add new claims. If they asked for a meeting, put the **book
 
 Use **only** the scheduler in `company.md`. Do not switch products.
 
-- **Calendly** (`calendly-cli`): `calendly users me` then `calendly event-types list` / `calendly availability event-times` / paste their scheduling URL in the reply.
-- **Cal.com** (`calcom-cli`): `calcom profile me` then `calcom event-types list` / `calcom slots available`. Env `CAL_API_KEY`.
-- **topcal** (`@topcal/cli`): if the URL is `https://topcal.ai/{workspace}/{username}/{eventSlug}` and they want times in-thread:
+### If scheduler is topcal (agent booking)
+
+This is the path where **you** can complete the meeting, not only dump a link.
+
+Public booker: `https://topcal.ai/{workspace}/{username}/{eventSlug}` — keep that host; do not rewrite to `app.topcal.ai`.
+
+1. Parse workspace / username / eventSlug from `company.md` booking URL.
+2. Fetch open times (no auth):
 
 ```
 GET https://topcal.ai/api/v1/public/{workspace}/{username}/{eventSlug}/slots?timezone={invitee IANA}
 ```
 
-Show 3–5 slots; do not pick one. Guest OTP uses the **invitee's** email — do not invent the code. Host CLI: `topcal auth status --json`.
+3. Show 3–5 slots in the invitee's timezone. Ask which one. Do not pick silently unless they already named a window.
+4. Request OTP to the **invitee's** email (not the operator's):
 
-Bins and health: [cli-stack.md](cli-stack.md).
+```
+GET https://topcal.ai/api/v1/public/{workspace}/{username}/{eventSlug}/otp?email={invitee email}&startAt={slot UTC}&timezone={IANA}&name={invitee name}
+```
+
+Use the returned `confirmUrl`. Tell them to read the 6-digit code from email. Never invent it.
+5. `GET {confirmUrl}&code={digits they read back}`
+6. Confirm `booking.startAt`, `booking.endAt`, and `booking.joinUrl` if present. Log it (CRM or `data/meetings.md`).
+
+If they only want a link in the reply, paste the public booker URL and stop.
+
+Host-side (operator's own calendar): `topcal auth status --json`. If not logged in and they asked you to *be* the host: `topcal auth register --wait auto` then `topcal calendars connect`. Detail: [cli-stack.md](cli-stack.md), `https://topcal.ai/skill/SKILL.md`.
+
+### If scheduler is Calendly or Cal.com
+
+Paste the booking URL from `company.md` in the reply. Optional CLI: `calendly users me` / `calcom profile me`. Do not run the topcal guest OTP flow on those products.
 
 ## Send
 
