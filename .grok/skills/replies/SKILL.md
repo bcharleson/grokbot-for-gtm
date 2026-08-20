@@ -28,3 +28,5 @@ interested · question · timing · referral · ooo · unsubscribe/angry · not-
 - No new claims beyond `company.md`
 
 Calendar links belong in **replies**, not email 1. **topcal** ([topcal.ai](https://topcal.ai)): you can complete the booking (slots → invitee OTP → confirm). Calendly / Cal.com: paste their URL if that is what `company.md` says. Playbook 06. Do not switch products.
+
+After interested/booked: write CRM / Airtable / ClickUp from `company.md` ([cli-stack.md](../../playbooks/cli-stack.md)).

@@ -77,11 +77,14 @@ Pick one primary. The Bot will not hit every paid API.
 - Existing customer list location (path or "in Instantly blocklist"):
 - Unsub / bounce handling: Instantly native is enough | we also maintain:
 
-## CRM / booking (optional)
+## CRM / tasks / mail (optional)
 
-- CRM: none | HubSpot | Attio | Pipedrive | other:
-- What "interested" means for a CRM record:
+- CRM: none | HubSpot | Salesforce | Attio | Pipedrive | Close | Twenty | Airtable | other:
+- Airtable base id / table id (if Airtable):
+- What "interested" means for a record:
 - Owner of new deals:
+- ClickUp: no | yes (list id or "ask at task time"):
+- Microsoft 365 mail (`m365`): no | yes:
 
 ## Voice
 

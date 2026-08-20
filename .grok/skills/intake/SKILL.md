@@ -17,6 +17,8 @@ Closed sets (do not add a vendor they did not pick):
 - Send: Instantly, HeyReach, optionally EmailBison / Smartlead
 - List: file, gtm, prospeo, ocean, leadmagic, clay, seamless, trigify, contactout
 - Meetings: topcal first (agent can finish the booking); Calendly or Cal.com if they already use them; replies only
-- CRM: none or a row in `playbooks/cli-stack.md`
+- CRM: HubSpot, Salesforce, Attio, Pipedrive, Close, Twenty, Airtable
+- Tasks: ClickUp
+- Work mail: Microsoft 365 (`m365`) — not a replacement for Instantly
 
 If a field is unknown, write `unknown`. Empty proof means copy has no metric.

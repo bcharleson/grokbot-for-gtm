@@ -49,6 +49,11 @@ Paste the booking URL from `company.md`. Optional: `calendly users me` / `calcom
 
 Live Instantly `email reply` and HeyReach `inbox send` need operator approval (see AGENTS.md).
 
-After a booked meeting, optional CRM write is playbook 08. If no CRM is configured, append a line to a local `data/meetings.md` (gitignored) with date, person, company, source channel.
+After interested or a booked meeting, write the system of record named in `company.md` (see [cli-stack.md](cli-stack.md)):
+
+- CRM: HubSpot / Salesforce / Attio / Pipedrive / Close / Twenty — create/assert the person + deal. No invented amounts.
+- Airtable: upsert a row if that is their pipeline base.
+- ClickUp: create a follow-up task on the list from intake.
+- If none: append `data/meetings.md` (gitignored).
 
 Next: [07-daily-ops.md](07-daily-ops.md)

@@ -84,7 +84,12 @@ probe_cli topcal "@topcal/cli"
 probe_cli calendly calendly-cli
 probe_cli calcom calcom-cli
 probe_cli hubspot hubspot-cli
+probe_cli salesforce salesforce-crm-cli
 probe_cli attio attio-agent-cli
+probe_cli pipedrive pipedrive-agent-cli
+probe_cli airtable airtable-agent-cli
+probe_cli clickup "@bcharleson/clickup-cli"
+probe_cli m365 ms365-cli
 probe_cli bison emailbison-cli
 probe_cli smartlead "@bcharleson/smartlead-cli"
 
@@ -120,7 +125,7 @@ else
   note "HEYREACH_API_KEY unset — LinkedIn path unavailable"
 fi
 
-for optional in PROSPEO_API_KEY LEADMAGIC_API_KEY OCEAN_API_TOKEN APOLLO_API_KEY HUBSPOT_ACCESS_TOKEN ATTIO_API_KEY CALENDLY_TOKEN CAL_API_KEY CALENDLY_API_KEY CALCOM_API_KEY; do
+for optional in PROSPEO_API_KEY LEADMAGIC_API_KEY OCEAN_API_TOKEN HUBSPOT_ACCESS_TOKEN ATTIO_API_KEY SALESFORCE_ACCESS_TOKEN PIPEDRIVE_API_TOKEN AIRTABLE_TOKEN CLICKUP_API_TOKEN M365_CLIENT_ID CALENDLY_TOKEN CAL_API_KEY; do
   eval "v=\${$optional-}"
   if [ -n "${v}" ]; then
     pass "$optional is set (optional)"

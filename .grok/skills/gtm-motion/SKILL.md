@@ -23,6 +23,7 @@ Entry point for outbound work in this repository. Sequential setup lives in `pla
 | Instantly campaign | [instantly-launch](../instantly-launch/SKILL.md) | 04 |
 | HeyReach campaign | [heyreach-launch](../heyreach-launch/SKILL.md) | 05 |
 | Unread replies, classify, draft, booking URL | [replies](../replies/SKILL.md) | 06 |
+| CRM / Airtable / ClickUp / M365 after interested | — | [cli-stack.md](../../playbooks/cli-stack.md) (CRM, ClickUp, mail) |
 | Which CLI is installed (npm/bin/health) | — | [cli-stack.md](../../playbooks/cli-stack.md) |
 | Scoreboard, pause, overnight | [daily-ops](../daily-ops/SKILL.md) | 07 |
 

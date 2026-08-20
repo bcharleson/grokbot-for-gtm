@@ -4,7 +4,9 @@ Not required for the first motion. Add one tool when a playbook 00–07 step is 
 
 npm names, binaries, and health checks: [cli-stack.md](cli-stack.md). Install only what the operator already uses.
 
-List/enrich: [03-data-sources.md](03-data-sources.md). Meetings: playbook 06 (link in replies only).
+- List/enrich: [03-data-sources.md](03-data-sources.md)
+- Meetings: playbook 06
+- CRM / Airtable / ClickUp / M365 mail: [cli-stack.md](cli-stack.md) (those headings)
 
 Rules if you add them:
 

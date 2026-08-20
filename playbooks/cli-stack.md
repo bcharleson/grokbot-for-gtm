@@ -32,14 +32,58 @@ Playbook: [03-data-sources.md](03-data-sources.md)
 
 ## CRM (after interested)
 
-| Job | npm | bin |
-|-----|-----|-----|
-| HubSpot | `hubspot-cli` | `hubspot` |
-| Attio | `attio-agent-cli` | `attio` |
-| Pipedrive | `pipedrive-agent-cli` | `pipedrive` |
-| Salesforce | `salesforce-crm-cli` | `salesforce` |
-| Close | `close-crm-cli` | `close` |
-| Twenty | `twenty-agent-cli` | `twenty-agent` |
+When a reply is interested or a meeting is booked, write a **real record** in the CRM named in `company.md`. Do not invent amounts, stages, or contacts. Ask if the object/pipeline IDs are unknown.
+
+| CRM | npm | bin | Auth | Health | After interested |
+|-----|-----|-----|------|--------|------------------|
+| HubSpot | `hubspot-cli` | `hubspot` | `HUBSPOT_ACCESS_TOKEN` | `hubspot status` | `hubspot contacts create` / `hubspot deals create` |
+| Salesforce | `salesforce-crm-cli` | `salesforce` | `SALESFORCE_ACCESS_TOKEN` + `SALESFORCE_INSTANCE_URL` | `salesforce status` | `salesforce` lead/contact/opportunity commands; `salesforce limits get` |
+| Attio | `attio-agent-cli` | `attio` | `ATTIO_API_KEY` | `attio status` | `attio people assert` / `attio companies assert` / `attio deals create` |
+| Pipedrive | `pipedrive-agent-cli` | `pipedrive` | `PIPEDRIVE_API_TOKEN` | `pipedrive deals list --pretty` | `pipedrive deals create` |
+| Close | `close-crm-cli` | `close` | token via `close login` | `close --help` | leads/opportunities per `--help` |
+| Twenty | `twenty-agent-cli` | `twenty-agent` | instance URL + key | `twenty-agent --help` | any Twenty instance |
+
+**Airtable** is not a CRM, but GTM teams keep pipeline here: npm `airtable-agent-cli`, bin `airtable`, env `AIRTABLE_TOKEN`, health `airtable bases list`. Upsert a row after interested:
+
+```bash
+airtable records upsert --base appXXX --table tblXXX \
+  --merge-on "Email" \
+  --fields '{"Name":"…","Email":"…","Status":"Interested"}'
+```
+
+Need base/table IDs from the operator. Do not guess them.
+
+## Project management (ClickUp)
+
+After interested / booked: a **task** the operator will see — not a silent CLI success.
+
+npm `@bcharleson/clickup-cli`, bin `clickup`, env `CLICKUP_API_TOKEN` (`pk_…`), health `clickup status` or `clickup workspaces list --pretty`.
+
+Hierarchy: workspace (team) → space → folder → list → task.
+
+```bash
+clickup workspaces list --pretty
+clickup spaces list --team-id TEAM_ID
+clickup tasks list --list-id LIST_ID --pretty
+clickup tasks create --list-id LIST_ID --name "Follow up: {company} / {person}" --pretty
+```
+
+Ask for the list ID (or space) during intake. 105 commands / 19 groups if they need comments, time, goals — `--help`.
+
+## Mail (Microsoft 365)
+
+Instantly/HeyReach are the **outbound sequencers**. `ms365-cli` is the operator's **Outlook/work mailbox** (inbound that did not go through Instantly, calendar, OneDrive). Do not send cold sequences through Graph if Instantly is on.
+
+npm `ms365-cli`, bin `m365`. Device login (Azure app): `M365_CLIENT_ID` + `M365_TENANT_ID`, then `m365 login`. Health: `m365 status --pretty`.
+
+```bash
+m365 mail unread-count
+m365 mail list --pretty
+m365 mail search "from:prospect@example.com"
+m365 calendar list --start $(date -u +%Y-%m-%dT00:00:00Z) --pretty
+```
+
+Send/reply via Graph only if they asked and Instantly is not the path for that thread.
 
 ## Meetings
 
@@ -99,8 +143,5 @@ Do not migrate them. Paste their URL in the reply, or the minimum CLI:
 | Partner programs | `partnerstack-cli` | `partnerstack` |
 | Workflow glue | `n8n-agent-cli` | `n8n-agent` |
 | Slack | `slack-agent-cli` | `slack` |
-| Tasks | `@bcharleson/clickup-cli` | `clickup` |
-| Mail / calendar (M365) | `ms365-cli` | `m365` |
-| Tables | `airtable-agent-cli` | `airtable` |
 
 Cookie-session LinkedIn CLIs are out of scope. ZoomInfo is `gtm`, not a `zoominfo` binary.

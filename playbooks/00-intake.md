@@ -65,12 +65,14 @@ Do not put a booking link in email 1 unless they explicitly opt in.
 25. Booking URL for replies (topcal: `https://topcal.ai/{workspace}/{username}/{eventSlug}`).
 26. Confirm health check for that product only. Do not switch.
 
-## Batch 7 — CRM, voice, suppression
+## Batch 7 — CRM, tasks, mail, voice
 
-27. CRM: none | HubSpot | Attio | Pipedrive | Salesforce | Close | Twenty | other?
-28. What does "interested" mean for a CRM record, and who owns new deals?
-29. Extra suppression list location?
-30. Words we use / never use? Formality: casual / plain / formal?
+27. CRM / system of record: none | HubSpot | Salesforce | Attio | Pipedrive | Close | Twenty | Airtable (base+table IDs) | other?
+28. What does "interested" mean for a record, and who owns new deals?
+29. ClickUp for follow-up tasks? If yes: workspace/list they want tasks in (`clickup workspaces list`).
+30. Work mail in Microsoft 365 / Outlook (`m365`)? Instantly stays the cold sequencer unless they say otherwise.
+31. Extra suppression list location?
+32. Words we use / never use? Formality: casual / plain / formal?
 
 ## After the interview
 
