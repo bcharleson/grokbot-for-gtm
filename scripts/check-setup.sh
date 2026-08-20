@@ -79,6 +79,16 @@ if command -v cloudflared >/dev/null 2>&1; then
 fi
 
 say ""
+say "Meetings / CRM (optional)"
+probe_cli topcal "@topcal/cli"
+probe_cli calendly calendly-cli
+probe_cli calcom calcom-cli
+probe_cli hubspot hubspot-cli
+probe_cli attio attio-agent-cli
+probe_cli bison emailbison-cli
+probe_cli smartlead "@bcharleson/smartlead-cli"
+
+say ""
 say "Files"
 if [ -f "$root/company.md" ]; then
   pass "company.md exists"

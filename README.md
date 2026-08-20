@@ -70,7 +70,7 @@ Grok Build (the coding TUI) *can* use stdio MCP. Grok Bot cannot. This repo trea
 - [leadmagic-agent-cli](https://github.com/bcharleson/leadmagic-agent-cli) — email find/validate, roles, job-change
 - [clay-gtm-cli](https://github.com/bcharleson/clay-gtm-cli) — fire **your** Clay webhook tables
 
-See [playbooks/03-data-sources.md](playbooks/03-data-sources.md). Other tools (CRM, calendar): [playbooks/08-optional-stack.md](playbooks/08-optional-stack.md).
+See [playbooks/03-data-sources.md](playbooks/03-data-sources.md). Full bin/health table (CRM, meetings, sequencers): [playbooks/cli-stack.md](playbooks/cli-stack.md).
 
 ---
 
@@ -134,7 +134,7 @@ See [AGENTS.md](AGENTS.md). Short version:
 AGENTS.md                 Bot standing orders
 SETUP-PROMPT.md           First message to a new Grok Bot
 company.example.md        Template for your ICP / offer / proof
-playbooks/                Numbered motion (source of sequential truth)
+playbooks/                Numbered motion + [cli-stack.md](playbooks/cli-stack.md)
 .grok/skills/             Task skills (Grok Build loads these automatically)
 examples/                 Fictional copy, leads JSON, company
 scripts/check-setup.sh    Non-secret setup probe

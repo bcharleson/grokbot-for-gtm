@@ -49,7 +49,8 @@ Default: low friction ("mind if I send X?"). Meeting asks only if you opt in.
 
 - Preferred first CTA:
 - Meeting link (use only after a positive reply, or if you explicitly want it in-sequence):
-- Calendar tool: none | Calendly | Cal.com | other:
+- Calendar tool: none | Calendly | Cal.com | topcal | other:
+- Booking URL (replies only):
 
 ## Data sources
 

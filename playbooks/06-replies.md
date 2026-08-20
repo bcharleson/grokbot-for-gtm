@@ -23,7 +23,17 @@ heyreach inbox list --seen false --pretty
 | unsubscribe / angry | Stop | Instantly: respect unsub. HeyReach: `campaigns stop-lead` |
 | not-a-fit | Wrong ICP | Thank and stop |
 
-Do not argue. Do not add new claims. If they asked for a meeting and `company.md` has a calendar tool, share the link **in the reply**, not in the original sequence.
+Do not argue. Do not add new claims. If they asked for a meeting, put the **booking URL from `company.md`** in the reply — not in the original sequence.
+
+If that URL is `https://topcal.ai/{workspace}/{username}/{eventSlug}` and they want times in-thread:
+
+```
+GET https://topcal.ai/api/v1/public/{workspace}/{username}/{eventSlug}/slots?timezone={invitee IANA}
+```
+
+Show 3–5 slots; do not pick one. Guest confirm is email OTP on the invitee's address — do not invent the code. Host-side CLI (only if `topcal` is installed and they asked to manage the calendar): `topcal auth status --json`. Command detail: [cli-stack.md](cli-stack.md) and `https://topcal.ai/skill/SKILL.md`.
+
+Same rule for Calendly / Cal.com: use whatever `company.md` named. Do not switch booking products.
 
 ## Send
 

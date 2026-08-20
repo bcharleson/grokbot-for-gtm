@@ -22,7 +22,8 @@ Entry point for outbound work in this repository. Sequential setup lives in `pla
 | Find people / emails (ZoomInfo `gtm`, Prospeo, Ocean, LeadMagic, Clay) | [data-sources](../data-sources/SKILL.md) | 03-data-sources |
 | Instantly campaign | [instantly-launch](../instantly-launch/SKILL.md) | 04 |
 | HeyReach campaign | [heyreach-launch](../heyreach-launch/SKILL.md) | 05 |
-| Unread replies, classify, draft | [replies](../replies/SKILL.md) | 06 |
+| Unread replies, classify, draft, booking URL | [replies](../replies/SKILL.md) | 06 |
+| Which CLI is installed (npm/bin/health) | — | [cli-stack.md](../../playbooks/cli-stack.md) |
 | Scoreboard, pause, overnight | [daily-ops](../daily-ops/SKILL.md) | 07 |
 
 ## Order

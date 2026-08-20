@@ -27,4 +27,4 @@ interested · question · timing · referral · ooo · unsubscribe/angry · not-
 - OOO: wait
 - No new claims beyond `company.md`
 
-Calendar links belong in **replies**, not email 1.
+Calendar links belong in **replies**, not email 1. Use the URL / tool in `company.md`. If the host is `topcal.ai`, slot JSON is unauthenticated GET (playbook 06). If `topcal` is on PATH: `topcal auth status --json`. Do not introduce a booking product they did not set.

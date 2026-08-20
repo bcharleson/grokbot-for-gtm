@@ -21,6 +21,7 @@ Prefer CLI binaries on the current computer (Grok Bot VM or local-exec). JSON on
 | Ocean.io | `npm i -g ocean-agent-cli` | `ocean credits balance` | `--pretty` |
 | LeadMagic | `npm i -g leadmagic-agent-cli` | `leadmagic status` | `--pretty` |
 | Clay | `npm i -g clay-gtm-cli` | `clay tables list` | JSON default |
+| topcal | `npm i -g @topcal/cli` | `topcal auth status --json` | `--json` |
 
 ZoomInfo is the **`gtm`** binary (`@zoominfo/gtm-ai-cli`), OAuth via `gtm auth login`. There is no `zoominfo` CLI in this repo.
 

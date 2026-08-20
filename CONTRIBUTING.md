@@ -5,7 +5,7 @@ Keep playbooks generic. Verify CLI flags against the published packages before d
 ## What belongs here
 
 - Playbooks, skills, and placeholder examples
-- Command examples that match published CLIs (`instantly-cli`, `heyreach-cli`, `prospeo-cli`, `ocean-agent-cli`, `leadmagic-agent-cli`, `clay-gtm-cli`, `@zoominfo/gtm-ai-cli`)
+- Command examples that match published packages listed in `playbooks/cli-stack.md`
 - Grok Bot setup (VM CLI install, local-exec, remote MCP)
 
 ## What does not belong here
@@ -25,6 +25,18 @@ Keep playbooks generic. Verify CLI flags against the published packages before d
 | Fictional copy / lists | `examples/` |
 
 One home per fact. Skills may link to playbooks; do not paste the same checklist into both.
+
+## Adding a CLI
+
+Other GTM tools can land here if they match the contract the Bot already uses:
+
+1. Published npm package, Node 18+, a real `bin`
+2. JSON on stdout; env or device-auth (no secrets in the repo); a health command
+3. Row in [playbooks/cli-stack.md](playbooks/cli-stack.md): npm name, bin, health check, which playbook
+4. Grok Bot path is the CLI binary — not local stdio MCP
+5. No cookie-session LinkedIn
+
+Do not add a tool that is only a GitHub folder and not on npm.
 
 ## Adding a skill
 
