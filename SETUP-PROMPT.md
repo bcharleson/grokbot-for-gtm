@@ -17,7 +17,8 @@ Do this, in order, and stop if a step fails:
 3. If `company.md` is missing, copy `company.example.md` to `company.md` and tell me the sections I must fill. Do not invent an ICP or proof.
 4. If `company.md` exists, summarize my ICP, offer, and proof in five bullets and wait for confirmation.
 5. Read `playbooks/00-prerequisites.md` and tell me the shortest path to a first **draft** campaign on the channels I have keys for (Instantly and/or HeyReach).
-6. Do not activate Instantly or start HeyReach until I say so. Do not send live replies until I say so.
+6. If I have no list file yet, read `playbooks/03-data-sources.md` and use whichever of `gtm` (ZoomInfo), Prospeo, Ocean, LeadMagic, or Clay actually authenticates. Pick one. Ask before spending enrich credits.
+7. Do not activate Instantly or start HeyReach until I say so. Do not send live replies until I say so.
 
 When you need a procedure, use the matching skill under `.grok/skills/` and the numbered playbook. Prefer CLI commands with JSON output over screenshots of the Instantly/HeyReach UI.
 

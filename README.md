@@ -2,7 +2,7 @@
 
 **Give Grok Bot this repo and it can run a complete outbound motion** — research a list, launch cold email, run LinkedIn in parallel, handle replies, and log meetings — without you pasting 156 CLI commands into chat.
 
-This is a playbook + skill pack. You bring your ICP, offer, sending accounts, and API keys. Nothing confidential lives in the repo.
+This is a playbook + skill pack. You bring your ICP, offer, sending accounts, and API keys.
 
 Companion to [cursor-for-gtm-demo](https://github.com/bcharleson/cursor-for-gtm-demo). That repo teaches Cursor skills for copy and deliverability. This one is the **operating system for Grok Bot**: install the agent-native CLIs on the Bot's computer, fill one company file, and walk a numbered motion.
 
@@ -23,7 +23,7 @@ Then paste [SETUP-PROMPT.md](SETUP-PROMPT.md) to a new Grok Bot.
 | Standing rules | [AGENTS.md](AGENTS.md) | How the Bot must behave (no invented proof, no send without preflight) |
 | First message | [SETUP-PROMPT.md](SETUP-PROMPT.md) | Paste this to a new Bot |
 | Your business | `company.md` (from [company.example.md](company.example.md)) | ICP, offer, proof, CTA — the only file you customize |
-| Numbered motion | [playbooks/](playbooks/) | 00 → 07, in order |
+| Numbered motion | [playbooks/](playbooks/) | 00 → 07, plus data sources |
 | Skills | [.grok/skills/](.grok/skills/) | Task playbooks Grok Build / the Bot can load |
 | Fictional examples | [examples/](examples/) | Copy patterns and a fake company. Never real data |
 | Setup check | `npm run check` | Confirms Node, CLIs, env vars, `company.md` — does not print secrets |
@@ -34,7 +34,7 @@ Then paste [SETUP-PROMPT.md](SETUP-PROMPT.md) to a new Grok Bot.
 0. Prerequisites     Node 18+, Instantly and/or HeyReach accounts, Grok Bot
 1. Company file      ICP, offer, proof, CTA  →  company.md
 2. Infrastructure    DNS (SPF/DKIM/DMARC), warmup, sender accounts
-3. List              25–100 named people who match the ICP
+3. List              25–100 people (file, or Prospeo / Ocean / LeadMagic / Clay / ZoomInfo `gtm`)
 4. Email             Instantly campaign, plain text, low-friction CTA
 5. LinkedIn          HeyReach sequence on the same people (optional)
 6. Replies           Classify, draft, book, log. Human approves sends
@@ -57,12 +57,20 @@ Grok Bot has its own Linux computer in the cloud. Jobs keep going when you close
 
 Grok Build (the coding TUI) *can* use stdio MCP. Grok Bot cannot. This repo treats the **CLI binary + JSON output** as the contract so both work.
 
-CLIs used here:
+**Send path (this repo's `npm install`):**
 
 - [instantly-cli](https://github.com/bcharleson/instantly-cli) — cold email
 - [heyreach-cli](https://github.com/bcharleson/heyreach-cli) — LinkedIn via HeyReach's public API
 
-Optional later: Clay, Apollo, Prospeo, HubSpot, Attio, Calendly, Cal.com, Fireflies, n8n. See [playbooks/08-optional-stack.md](playbooks/08-optional-stack.md). Do not install ten tools for the first run.
+**List / enrich (install only what you have keys for):**
+
+- ZoomInfo [GTM CLI](https://gtm.ai/docs/cli) (`gtm`, npm `@zoominfo/gtm-ai-cli`) — OAuth, search free, enrich uses bulk credits
+- [prospeo-cli](https://github.com/bcharleson/prospeo-cli) — person/company search + enrich
+- [ocean-agent-cli](https://github.com/bcharleson/ocean-agent-cli) — Ocean.io search + enrich
+- [leadmagic-agent-cli](https://github.com/bcharleson/leadmagic-agent-cli) — email find/validate, roles, job-change
+- [clay-gtm-cli](https://github.com/bcharleson/clay-gtm-cli) — fire **your** Clay webhook tables
+
+See [playbooks/03-data-sources.md](playbooks/03-data-sources.md). Other tools (CRM, calendar): [playbooks/08-optional-stack.md](playbooks/08-optional-stack.md).
 
 ---
 
@@ -140,7 +148,8 @@ Skills:
 | [grokbot-runtime](.grok/skills/grokbot-runtime/SKILL.md) | Installing/running CLIs on Grok Bot vs local-exec vs MCP |
 | [deliverability](.grok/skills/deliverability/SKILL.md) | DNS, warmup, inbox placement, plain-text rules |
 | [copywriting](.grok/skills/copywriting/SKILL.md) | Drafting or reviewing email / LinkedIn copy |
-| [list-building](.grok/skills/list-building/SKILL.md) | Building or scoring an ICP list |
+| [list-building](.grok/skills/list-building/SKILL.md) | Validating an ICP list before send |
+| [data-sources](.grok/skills/data-sources/SKILL.md) | Prospeo, Ocean, LeadMagic, Clay, ZoomInfo `gtm` |
 | [instantly-launch](.grok/skills/instantly-launch/SKILL.md) | Creating and launching Instantly campaigns |
 | [heyreach-launch](.grok/skills/heyreach-launch/SKILL.md) | Creating and starting HeyReach campaigns |
 | [replies](.grok/skills/replies/SKILL.md) | Classifying and drafting responses |

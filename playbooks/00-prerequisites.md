@@ -11,6 +11,7 @@ Goal: the Bot can talk to at least one channel. No campaigns yet.
 - [ ] Sending mailboxes already connected in Instantly (warmup can still be ramping)
 - [ ] LinkedIn accounts already connected in HeyReach (if using LinkedIn)
 - [ ] API keys in `.env` or exported in the shell — never in chat
+- [ ] Optional list CLI: ZoomInfo `gtm auth login`, and/or Prospeo / Ocean / LeadMagic / Clay installed on the same computer
 
 ## Bot checklist
 

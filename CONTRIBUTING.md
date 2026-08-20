@@ -1,12 +1,12 @@
 # Contributing
 
-This repo is a **business-agnostic** Grok Bot playbook. Keep it that way.
+Keep playbooks generic. Verify CLI flags against the published packages before documenting them.
 
 ## What belongs here
 
-- Playbooks, skills, and examples with no client names, private metrics, or proprietary sequences
-- CLI command examples that match published `instantly-cli` / `heyreach-cli` (verify flags before documenting)
-- Improvements to Grok Bot setup (VM CLI install, local-exec, remote MCP) without real credentials
+- Playbooks, skills, and placeholder examples
+- Command examples that match published CLIs (`instantly-cli`, `heyreach-cli`, `prospeo-cli`, `ocean-agent-cli`, `leadmagic-agent-cli`, `clay-gtm-cli`, `@zoominfo/gtm-ai-cli`)
+- Grok Bot setup (VM CLI install, local-exec, remote MCP)
 
 ## What does not belong here
 

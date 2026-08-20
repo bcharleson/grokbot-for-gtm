@@ -1,12 +1,12 @@
 # 03 — List
 
-Goal: 25–100 real people who match the ICP, in a JSON file the operator owns. Not in git.
+Goal: 25–100 people who match the ICP, in a JSON file the operator owns. Not in git.
 
-Load `.grok/skills/list-building/SKILL.md`.
+Load `.grok/skills/list-building/SKILL.md`. If there is no file yet, build one with [03-data-sources.md](03-data-sources.md).
 
 ## Rules
 
-- Operator supplies the list (CSV/JSON they export from their CRM, Clay, Apollo, etc.)
+- List comes from a file in `lists/` **or** one CLI in playbook 03-data-sources (ZoomInfo `gtm`, Prospeo, Ocean, LeadMagic, Clay)
 - `examples/sample-leads.json` is fictional. Never send it
 - Drop real files in `lists/` (gitignored) e.g. `lists/icp-batch-1.json`
 - Every row needs enough to send on the chosen channel:
@@ -49,7 +49,7 @@ Instantly API fields are snake_case. Do not put merge tags in this file.
 1. Validate required fields
 2. Count rows, titles vs ICP, domains vs suppression
 3. Report: `N eligible / N skipped (reasons)`
-4. Do not enrich by guessing emails. If enrichment tools are configured, see playbook 08
+4. Do not enrich by guessing emails. Configured CLIs: [03-data-sources.md](03-data-sources.md)
 
 First live batch: **25–50**. Not 5,000.
 

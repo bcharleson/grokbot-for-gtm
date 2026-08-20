@@ -21,7 +21,7 @@ Playbook: `playbooks/03-list.md`. The operator owns the list. This skill validat
 - Send `examples/sample-leads.json`
 - Guess emails
 - Commit real lists (put them in `lists/`, gitignored)
-- Enrich unless playbook 08 tools are configured
+- Enrich unless a data-source CLI is configured — then [data-sources](../data-sources/SKILL.md) / playbook 03-data-sources
 
 ## Report
 

@@ -12,10 +12,19 @@ If `company.md` is missing, copy `company.example.md` → `company.md` and stop.
 
 Prefer CLI binaries on the current computer (Grok Bot VM or local-exec). JSON on stdout.
 
-| Tool | Install | Health check | Pretty flag |
-|------|---------|--------------|-------------|
+| Tool | Install | Health check | Pretty / format |
+|------|---------|--------------|-----------------|
 | Instantly | `npm i -g instantly-cli` | `instantly campaigns list --limit 1` | `--output pretty` |
 | HeyReach | `npm i -g heyreach-cli` | `heyreach status` | `--pretty` |
+| ZoomInfo GTM CLI | `npm i -g @zoominfo/gtm-ai-cli` | `gtm auth whoami` | `-f json` (default) |
+| Prospeo | `npm i -g prospeo-cli` | `prospeo account info` | `--pretty` |
+| Ocean.io | `npm i -g ocean-agent-cli` | `ocean credits balance` | `--pretty` |
+| LeadMagic | `npm i -g leadmagic-agent-cli` | `leadmagic status` | `--pretty` |
+| Clay | `npm i -g clay-gtm-cli` | `clay tables list` | JSON default |
+
+ZoomInfo is the **`gtm`** binary (`@zoominfo/gtm-ai-cli`), OAuth via `gtm auth login`. There is no `zoominfo` CLI in this repo.
+
+Data-source env vars (when not using `gtm` OAuth): `PROSPEO_API_KEY`, `OCEAN_API_TOKEN` (not `_API_KEY`), `LEADMAGIC_API_KEY`. Clay uses registered webhook URLs in `~/.clay/`, not a single env key.
 
 Do **not** configure stdio MCP (`instantly mcp`, `heyreach mcp`) for Grok Bot. Grok Bot cannot attach local stdio servers. Use the CLI, or a remote HTTP MCP if the operator hosts one.
 
@@ -38,7 +47,8 @@ Ask before:
 2. `heyreach campaigns start`
 3. Sending a live Instantly reply or HeyReach inbox message
 4. Pause, delete, or bulk-update a campaign that is already live
-5. Adding more than 50 leads in one call
+5. Adding more than 50 leads in one Instantly/HeyReach call
+6. Enrich / reveal / bulk-enrich on more than 10 people or companies (ZoomInfo enrich, Prospeo bulk-enrich, Ocean reveal, LeadMagic find-mobile / email-to-profile)
 
 Creating **draft** campaigns, listing resources, pulling analytics, and drafting copy do not need approval.
 
@@ -50,9 +60,12 @@ Creating **draft** campaigns, listing resources, pulling analytics, and drafting
 - HeyReach merge tags: `{{firstName}}`, `{{companyName}}`.
 - Lists in `examples/` are fictional. Never treat them as a send list.
 - Do not use LinkedIn cookie/session CLIs. HeyReach public API only.
+- Pick **one** data-source CLI unless the operator asked for a waterfall. See `playbooks/03-data-sources.md`.
+- Ocean `reveal emails` / `reveal phones` need `--webhook-url`. Skip without one.
+- Prospeo person search does not return email; enrich after search.
 
 ## Motion order
 
-Follow playbooks 00 → 07. Skip a channel if that key is unset (email-only or LinkedIn-only is valid). Do not skip 02 (infrastructure) on the email path.
+Follow playbooks 00 → 07. Use 03-data-sources when the list does not already exist as a file. Skip a send channel if that key is unset (email-only or LinkedIn-only is valid). Do not skip 02 (infrastructure) on the email path.
 
 When a skill applies, load it. Router: `.grok/skills/gtm-motion/SKILL.md`.

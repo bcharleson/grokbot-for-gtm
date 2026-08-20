@@ -4,10 +4,11 @@ Not required for the first motion. Add one tool when a playbook 00–07 step is 
 
 All of these have agent-native CLIs from the same family as Instantly/HeyReach. Install only what you have keys for. Documented here so Grok Bot knows the names — not so it installs everything.
 
+List/enrich CLIs live in [03-data-sources.md](03-data-sources.md) (ZoomInfo `gtm`, Prospeo, Ocean, LeadMagic, Clay). This page is everything else.
+
 | Gap | Tool | CLI | Notes |
 |-----|------|-----|-------|
-| List / waterfall enrich | Clay | `clay-gtm-cli` | Webhook + callback; you still own the Clay table |
-| People search | Apollo, Prospeo, Seamless | `apollo-agent-cli`, `prospeo-cli`, `seamless-ai-cli` | Do not scrape LinkedIn |
+| People search (extra) | Apollo, Seamless | `apollo-agent-cli`, `seamless-ai-cli` | Do not scrape LinkedIn |
 | CRM | HubSpot, Attio, Pipedrive | `hubspot-cli`, `attio-agent-cli`, `pipedrive-agent-cli` | Write deals only after interested |
 | Booking | Calendly, Cal.com | `calendly-cli`, `calcom-cli` | Link in **replies**, not email 1 |
 | Notes after the call | Fireflies, Otter | `fireflies-cli`, `otter-cli` | |

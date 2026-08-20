@@ -1,11 +1,6 @@
 # Notice
 
-This repository is **business-agnostic** and safe for public sharing.
-
-- Examples are fictional or use placeholders (`{{firstName}}`, `[company]`, `[Sender]`)
-- Playbooks teach *how* to run outbound. You supply ICP, offer, and proof
-- No real customer lists, campaign IDs, private metrics, or API keys are included
-- Instantly and HeyReach CLIs are optional until you add your own keys locally
+Examples use placeholders (`{{firstName}}`, `[company]`, `[Sender]`). You supply ICP, offer, proof, and keys locally (`company.md`, `.env` — gitignored).
 
 ## Compliance
 

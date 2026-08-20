@@ -58,6 +58,26 @@ else
   note "heyreach not installed (npm i -g heyreach-cli) — required for LinkedIn path"
 fi
 
+probe_cli() {
+  local bin="$1" pkg="$2"
+  if command -v "$bin" >/dev/null 2>&1; then
+    pass "$bin -> $(command -v "$bin")"
+  else
+    note "$bin not installed (optional — npm i -g $pkg)"
+  fi
+}
+
+say ""
+say "List / enrich CLIs (optional)"
+probe_cli gtm "@zoominfo/gtm-ai-cli"
+probe_cli prospeo prospeo-cli
+probe_cli ocean ocean-agent-cli
+probe_cli leadmagic leadmagic-agent-cli
+probe_cli clay clay-gtm-cli
+if command -v cloudflared >/dev/null 2>&1; then
+  pass "cloudflared -> $(command -v cloudflared) (Clay --wait callbacks)"
+fi
+
 say ""
 say "Files"
 if [ -f "$root/company.md" ]; then
@@ -90,12 +110,15 @@ else
   note "HEYREACH_API_KEY unset — LinkedIn path unavailable"
 fi
 
-for optional in CLAY_WEBHOOK_URL APOLLO_API_KEY PROSPEO_API_KEY HUBSPOT_ACCESS_TOKEN ATTIO_API_KEY CALENDLY_API_KEY CALCOM_API_KEY; do
+for optional in PROSPEO_API_KEY LEADMAGIC_API_KEY OCEAN_API_TOKEN APOLLO_API_KEY HUBSPOT_ACCESS_TOKEN ATTIO_API_KEY CALENDLY_API_KEY CALCOM_API_KEY; do
   eval "v=\${$optional-}"
   if [ -n "${v}" ]; then
     pass "$optional is set (optional)"
   fi
 done
+if command -v gtm >/dev/null 2>&1; then
+  note "ZoomInfo uses gtm auth login (OAuth), not an env API key — run gtm auth whoami"
+fi
 
 say ""
 say "Summary: $ok ok, $warn warn, $fail fail"

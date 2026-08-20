@@ -45,6 +45,13 @@ This is what a filled `company.md` looks like. Relaydesk is made up. Copy the *s
 - Meeting link: (use only after they ask)
 - Calendar tool: none
 
+## Data sources
+
+- Primary: file
+- If `file`: lists/ (operator-supplied; do not use examples/sample-leads.json)
+- Max people to pull before asking: 50
+- Spend credits to enrich emails: no
+
 ## Channels
 
 - Email via Instantly: yes

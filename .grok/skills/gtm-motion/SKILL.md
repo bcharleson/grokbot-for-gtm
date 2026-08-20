@@ -19,6 +19,7 @@ Entry point for outbound work in this repository. Sequential setup lives in `pla
 | DNS, warmup, blocklist, inbox health | [deliverability](../deliverability/SKILL.md) | 02 |
 | Draft or review copy | [copywriting](../copywriting/SKILL.md) | 04 / 05 |
 | Build or score a list | [list-building](../list-building/SKILL.md) | 03 |
+| Find people / emails (ZoomInfo `gtm`, Prospeo, Ocean, LeadMagic, Clay) | [data-sources](../data-sources/SKILL.md) | 03-data-sources |
 | Instantly campaign | [instantly-launch](../instantly-launch/SKILL.md) | 04 |
 | HeyReach campaign | [heyreach-launch](../heyreach-launch/SKILL.md) | 05 |
 | Unread replies, classify, draft | [replies](../replies/SKILL.md) | 06 |

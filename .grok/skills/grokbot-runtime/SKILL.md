@@ -16,11 +16,15 @@ Install CLIs **on the Bot computer** so overnight jobs survive a closed laptop.
 
 ```bash
 npm install -g instantly-cli heyreach-cli
-export INSTANTLY_API_KEY  # already set in the environment
+# list/enrich — only what you use:
+# npm i -g @zoominfo/gtm-ai-cli prospeo-cli ocean-agent-cli leadmagic-agent-cli clay-gtm-cli
+export INSTANTLY_API_KEY
 export HEYREACH_API_KEY
 instantly campaigns list --limit 1 --output pretty
 heyreach status --pretty
 ```
+
+ZoomInfo: `gtm auth login` (browser OAuth on this computer), then `gtm auth whoami`. Token lives in `~/.config/gtm-ai/`, not an env var.
 
 From this repo after `npm install`, `npx instantly` and `npx heyreach` also work.
 
@@ -37,7 +41,7 @@ Use when keys must stay on the Mac. Every command is approved by the operator. D
 
 Do not add stdio MCP as a Grok Bot plugin. Use the CLI.
 
-Instantly pretty-print: `--output pretty`. HeyReach: `--pretty`. Default output is compact JSON.
+Instantly pretty-print: `--output pretty`. HeyReach / Prospeo / Ocean / LeadMagic: `--pretty`. ZoomInfo `gtm`: `-f json|jsonl|csv|table`. Default for the bcharleson CLIs is compact JSON.
 
 ## Secrets
 

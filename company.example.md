@@ -51,6 +51,16 @@ Default: low friction ("mind if I send X?"). Meeting asks only if you opt in.
 - Meeting link (use only after a positive reply, or if you explicitly want it in-sequence):
 - Calendar tool: none | Calendly | Cal.com | other:
 
+## Data sources
+
+Pick one primary. The Bot will not hit every paid API.
+
+- Primary: none | file | gtm | prospeo | ocean | leadmagic | clay
+- If `file`: path under `lists/` (gitignored)
+- Max people to pull before asking: 50
+- Spend credits to enrich emails: yes / no
+- ZoomInfo is the `gtm` CLI (`gtm auth login`), not a `zoominfo` binary
+
 ## Channels
 
 - Email via Instantly: yes / no
