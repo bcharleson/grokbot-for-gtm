@@ -45,11 +45,11 @@ Playbook: [03-data-sources.md](03-data-sources.md)
 
 Links go in **replies**, not email 1. Use the tool named in `company.md`.
 
-| Job | npm | bin | Notes |
-|-----|-----|-----|--------|
-| Booking link / host calendar | `@topcal/cli` | `topcal` | Device auth: `topcal auth status --json`. Public booker URLs are `https://topcal.ai/{workspace}/{username}/{eventSlug}` — slot JSON is unauthenticated GET (see playbook 06). Agent skill if needed: `https://topcal.ai/skill/SKILL.md` |
-| Booking | `calendly-cli` | `calendly` | |
-| Booking | `calcom-cli` | `calcom` | |
+| Job | npm | bin | Health | Notes |
+|-----|-----|-----|--------|--------|
+| Booking | `calendly-cli` | `calendly` | `calendly users me` | Env `CALENDLY_TOKEN`. Event types / availability / invitees. |
+| Booking | `calcom-cli` | `calcom` | `calcom profile me` | Env `CAL_API_KEY`. Yes — this CLI exists (`calcom-cli` on npm). |
+| Booking | `@topcal/cli` | `topcal` | `topcal auth status --json` | Device auth (`topcal auth register`). Public URLs `https://topcal.ai/{workspace}/{username}/{eventSlug}` — unauthenticated slot GET in playbook 06. |
 | Call notes | `fireflies-cli` | `fireflies` | |
 | Call notes | `otter-agent-cli` | `otter` | |
 | Meetings API | `zoom-agent-cli` | `zoom` | |

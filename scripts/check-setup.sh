@@ -80,9 +80,9 @@ fi
 
 say ""
 say "Meetings / CRM (optional)"
-probe_cli topcal "@topcal/cli"
 probe_cli calendly calendly-cli
 probe_cli calcom calcom-cli
+probe_cli topcal "@topcal/cli"
 probe_cli hubspot hubspot-cli
 probe_cli attio attio-agent-cli
 probe_cli bison emailbison-cli
@@ -120,7 +120,7 @@ else
   note "HEYREACH_API_KEY unset — LinkedIn path unavailable"
 fi
 
-for optional in PROSPEO_API_KEY LEADMAGIC_API_KEY OCEAN_API_TOKEN APOLLO_API_KEY HUBSPOT_ACCESS_TOKEN ATTIO_API_KEY CALENDLY_API_KEY CALCOM_API_KEY; do
+for optional in PROSPEO_API_KEY LEADMAGIC_API_KEY OCEAN_API_TOKEN APOLLO_API_KEY HUBSPOT_ACCESS_TOKEN ATTIO_API_KEY CALENDLY_TOKEN CAL_API_KEY CALENDLY_API_KEY CALCOM_API_KEY; do
   eval "v=\${$optional-}"
   if [ -n "${v}" ]; then
     pass "$optional is set (optional)"

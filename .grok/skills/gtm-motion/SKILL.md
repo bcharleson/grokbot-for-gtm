@@ -14,8 +14,8 @@ Entry point for outbound work in this repository. Sequential setup lives in `pla
 
 | Need | Skill | Playbook |
 |------|-------|----------|
-| Install CLIs on Grok Bot / local-exec / MCP | [grokbot-runtime](../grokbot-runtime/SKILL.md) | 00 |
-| ICP / offer / proof missing | — | 01 (`company.md`) |
+| Install CLIs on Grok Bot / local-exec / MCP | [grokbot-runtime](../grokbot-runtime/SKILL.md) | 00-prerequisites |
+| Missing or blank GTM context | [intake](../intake/SKILL.md) | 00-intake, then 01 |
 | DNS, warmup, blocklist, inbox health | [deliverability](../deliverability/SKILL.md) | 02 |
 | Draft or review copy | [copywriting](../copywriting/SKILL.md) | 04 / 05 |
 | Build or score a list | [list-building](../list-building/SKILL.md) | 03 |
@@ -28,7 +28,7 @@ Entry point for outbound work in this repository. Sequential setup lives in `pla
 
 ## Order
 
-00 prerequisites → 01 company → 02 infrastructure → 03 list → 04 email and/or 05 LinkedIn → 06 replies → 07 daily ops.
+00-intake → 00-prerequisites → 01 company confirm → 02 infrastructure → 03 list → 04 email and/or 05 LinkedIn → 06 replies → 07 daily ops.
 
 Skip a channel if that API key is unset. Do not skip 02 on the email path.
 

@@ -25,15 +25,19 @@ heyreach inbox list --seen false --pretty
 
 Do not argue. Do not add new claims. If they asked for a meeting, put the **booking URL from `company.md`** in the reply — not in the original sequence.
 
-If that URL is `https://topcal.ai/{workspace}/{username}/{eventSlug}` and they want times in-thread:
+Use **only** the scheduler in `company.md`. Do not switch products.
+
+- **Calendly** (`calendly-cli`): `calendly users me` then `calendly event-types list` / `calendly availability event-times` / paste their scheduling URL in the reply.
+- **Cal.com** (`calcom-cli`): `calcom profile me` then `calcom event-types list` / `calcom slots available`. Env `CAL_API_KEY`.
+- **topcal** (`@topcal/cli`): if the URL is `https://topcal.ai/{workspace}/{username}/{eventSlug}` and they want times in-thread:
 
 ```
 GET https://topcal.ai/api/v1/public/{workspace}/{username}/{eventSlug}/slots?timezone={invitee IANA}
 ```
 
-Show 3–5 slots; do not pick one. Guest confirm is email OTP on the invitee's address — do not invent the code. Host-side CLI (only if `topcal` is installed and they asked to manage the calendar): `topcal auth status --json`. Command detail: [cli-stack.md](cli-stack.md) and `https://topcal.ai/skill/SKILL.md`.
+Show 3–5 slots; do not pick one. Guest OTP uses the **invitee's** email — do not invent the code. Host CLI: `topcal auth status --json`.
 
-Same rule for Calendly / Cal.com: use whatever `company.md` named. Do not switch booking products.
+Bins and health: [cli-stack.md](cli-stack.md).
 
 ## Send
 

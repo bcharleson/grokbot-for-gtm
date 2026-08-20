@@ -21,8 +21,8 @@ Then paste [SETUP-PROMPT.md](SETUP-PROMPT.md) to a new Grok Bot.
 | Piece | Path | Purpose |
 |-------|------|---------|
 | Standing rules | [AGENTS.md](AGENTS.md) | How the Bot must behave (no invented proof, no send without preflight) |
-| First message | [SETUP-PROMPT.md](SETUP-PROMPT.md) | Paste this to a new Bot |
-| Your business | `company.md` (from [company.example.md](company.example.md)) | ICP, offer, proof, CTA — the only file you customize |
+| First message | [SETUP-PROMPT.md](SETUP-PROMPT.md) | Paste this to a new Bot — it interviews you |
+| Intake | [playbooks/00-intake.md](playbooks/00-intake.md) | Questions the Bot must ask; answers go in `company.md` |
 | Numbered motion | [playbooks/](playbooks/) | 00 → 07, plus data sources |
 | Skills | [.grok/skills/](.grok/skills/) | Task playbooks Grok Build / the Bot can load |
 | Fictional examples | [examples/](examples/) | Copy patterns and a fake company. Never real data |
@@ -31,8 +31,9 @@ Then paste [SETUP-PROMPT.md](SETUP-PROMPT.md) to a new Grok Bot.
 ### The motion
 
 ```
-0. Prerequisites     Node 18+, Instantly and/or HeyReach accounts, Grok Bot
-1. Company file      ICP, offer, proof, CTA  →  company.md
+0. Intake            Bot asks you the context batches → company.md
+0b. Prerequisites    Node 18+, Instantly and/or HeyReach
+1. Confirm           Read back ICP / offer / proof / tools
 2. Infrastructure    DNS (SPF/DKIM/DMARC), warmup, sender accounts
 3. List              25–100 people (file, or Prospeo / Ocean / LeadMagic / Clay / ZoomInfo `gtm`)
 4. Email             Instantly campaign, plain text, low-friction CTA
@@ -145,6 +146,7 @@ Skills:
 | Skill | Use when |
 |-------|----------|
 | [gtm-motion](.grok/skills/gtm-motion/SKILL.md) | Any outbound work — router |
+| [intake](.grok/skills/intake/SKILL.md) | Filling `company.md` by asking you |
 | [grokbot-runtime](.grok/skills/grokbot-runtime/SKILL.md) | Installing/running CLIs on Grok Bot vs local-exec vs MCP |
 | [deliverability](.grok/skills/deliverability/SKILL.md) | DNS, warmup, inbox placement, plain-text rules |
 | [copywriting](.grok/skills/copywriting/SKILL.md) | Drafting or reviewing email / LinkedIn copy |

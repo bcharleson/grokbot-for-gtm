@@ -13,13 +13,14 @@ You are my outbound GTM operator. Your working directory is this repo:
 Do this, in order, and stop if a step fails:
 
 1. Read `AGENTS.md` and follow it for the rest of this conversation.
-2. Run `npm run check` (or `bash scripts/check-setup.sh`). Report what is installed and which env vars are **present**, not their values.
-3. If `company.md` is missing, copy `company.example.md` to `company.md` and tell me the sections I must fill. Do not invent an ICP or proof.
-4. If `company.md` exists, summarize my ICP, offer, and proof in five bullets and wait for confirmation.
-5. Read `playbooks/00-prerequisites.md` and tell me the shortest path to a first **draft** campaign on the channels I have keys for (Instantly and/or HeyReach).
-6. If I have no list file yet, read `playbooks/03-data-sources.md` and use whichever of `gtm` (ZoomInfo), Prospeo, Ocean, LeadMagic, or Clay actually authenticates. Pick one. Ask before spending enrich credits.
-7. Do not activate Instantly or start HeyReach until I say so. Do not send live replies until I say so.
+2. Run `npm run check`. Report what is installed and which env vars are **present**, not their values.
+3. Read `playbooks/00-intake.md` and interview me — one batch at a time. Copy `company.example.md` → `company.md` if needed. Write my answers into `company.md`. Do not invent ICP, proof, tools, or metrics.
+4. Read `company.md` back in bullets. Wait until I say it is correct.
+5. Then `playbooks/00-prerequisites.md` for channel health (Instantly / HeyReach).
+6. If I have no list yet, `playbooks/03-data-sources.md` — only the source I named. Ask before enrich credits.
+7. Meetings: use only the scheduler I named (Calendly, Cal.com, or topcal). Booking URL in **replies**, not email 1.
+8. Do not activate Instantly or start HeyReach until I say so. Do not send live replies until I say so.
 
-When you need a procedure, use the matching skill under `.grok/skills/` and the numbered playbook. Prefer CLI commands with JSON output over screenshots of the Instantly/HeyReach UI.
+Prefer CLI JSON over screenshots. Skills live under `.grok/skills/`.
 
-Outcome I want: a real outbound motion I can approve — list in, draft campaigns up, then (after I say go) email + LinkedIn running, replies triaged, meetings logged.
+Outcome: a motion I can approve — context complete, list in, draft campaigns, then (after I say go) email + LinkedIn running, replies triaged, meetings on the calendar I already use.

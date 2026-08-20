@@ -6,7 +6,7 @@ Read this file and `company.md` before doing any outbound work in this repo. Seq
 
 You are an outbound operator, not a copy generator. The outcome is pipeline: relevant conversations, meetings, and CRM records. Success is not "a campaign object exists."
 
-If `company.md` is missing, copy `company.example.md` → `company.md` and stop. Ask the operator to fill it. Do not invent an ICP, offer, or proof.
+If `company.md` is missing or any required section is blank, run `playbooks/00-intake.md` (interview, one batch at a time) and write answers into `company.md`. Do not invent an ICP, offer, proof, data source, or booking tool.
 
 ## Runtime
 
@@ -21,6 +21,8 @@ Prefer CLI binaries on the current computer (Grok Bot VM or local-exec). JSON on
 | Ocean.io | `npm i -g ocean-agent-cli` | `ocean credits balance` | `--pretty` |
 | LeadMagic | `npm i -g leadmagic-agent-cli` | `leadmagic status` | `--pretty` |
 | Clay | `npm i -g clay-gtm-cli` | `clay tables list` | JSON default |
+| Calendly | `npm i -g calendly-cli` | `calendly users me` | `--pretty` |
+| Cal.com | `npm i -g calcom-cli` | `calcom profile me` | `--pretty` |
 | topcal | `npm i -g @topcal/cli` | `topcal auth status --json` | `--json` |
 
 ZoomInfo is the **`gtm`** binary (`@zoominfo/gtm-ai-cli`), OAuth via `gtm auth login`. There is no `zoominfo` CLI in this repo.
@@ -67,6 +69,6 @@ Creating **draft** campaigns, listing resources, pulling analytics, and drafting
 
 ## Motion order
 
-Follow playbooks 00 → 07. Use 03-data-sources when the list does not already exist as a file. Skip a send channel if that key is unset (email-only or LinkedIn-only is valid). Do not skip 02 (infrastructure) on the email path.
+Intake (`playbooks/00-intake.md`) before anything that spends or sends. Then 00-prerequisites → 02 → 03 → 04/05 → 06 → 07. Use 03-data-sources when the list is not a file. Skip a send channel if that key is unset. Do not skip 02 on the email path. Booking tool is whatever intake recorded (Calendly, Cal.com, topcal, or none) — do not switch.
 
 When a skill applies, load it. Router: `.grok/skills/gtm-motion/SKILL.md`.

@@ -1,26 +1,21 @@
 # 01 — Company file
 
-Goal: one source of truth for ICP, offer, and proof. The Bot must not invent these.
+Goal: `company.md` is complete from **intake**, not from the Bot guessing.
+
+The interview is [00-intake.md](00-intake.md). This page is only the pass/fail on the file.
 
 ## Operator
 
-```bash
-cp company.example.md company.md
-```
-
-Fill every section. Write `unknown` rather than guessing. Proof is required before **launch** (playbooks 04–05). Draft campaigns can be built with a weaker proof section, but copy will omit metrics.
+You can still `cp company.example.md company.md` and type. Prefer letting the Bot ask the batches in 00-intake.
 
 ## Bot
 
+If any required field is blank, return to intake. Then:
+
 1. Read `company.md`
-2. Restate, in the operator's words:
-   - who we email
-   - the pain
-   - the offer
-   - the proof we are allowed to cite
-   - which channels are on
+2. Restate ICP, pain, offer, proof, channels, list source, scheduler
 3. Wait for "yes, that's us"
-4. Flag empty proof, empty suppression, or a meeting-link CTA in email 1
+4. Flag empty proof, empty suppression, or a meeting link planned for email 1
 
 ## Pass / fail
 
