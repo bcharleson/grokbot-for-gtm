@@ -69,6 +69,6 @@ Creating **draft** campaigns, listing resources, pulling analytics, and drafting
 
 ## Motion order
 
-Intake (`playbooks/00-intake.md`) before anything that spends or sends. Then 00-prerequisites → 02 → 03 → 04/05 → 06 → 07. Use 03-data-sources when the list is not a file. Skip a send channel if that key is unset. Do not skip 02 on the email path. Booking tool is whatever intake recorded. If topcal: agent-book via public slots + invitee OTP (playbook 06). Calendly/Cal.com: URL in the reply. Do not switch products.
+Intake (`playbooks/00-intake.md`) before anything that spends or sends. Then 00-prerequisites → 02 → 03 → 04/05 → 06 → 07. Use 03-data-sources when the list is not a file. Skip a send channel if that key is unset. Do not skip 02 on the email path. Booking tool is whatever intake recorded (Calendly, Cal.com, or topcal). Fetch slots and book via that CLI — playbook 06. Do not switch products.
 
 When a skill applies, load it. Router: `.grok/skills/gtm-motion/SKILL.md`.

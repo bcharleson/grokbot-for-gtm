@@ -27,10 +27,4 @@ interested · question · timing · referral · ooo · unsubscribe/angry · not-
 - OOO: wait
 - No new claims beyond `company.md`
 
-Calendar links belong in **replies**, not email 1. Scheduler is whatever intake wrote.
-
-If **topcal**: you can agent-book (slots GET → invitee OTP → confirm). Full loop in playbook 06. Public URLs stay on `https://topcal.ai/...`.
-
-If **Calendly** or **Cal.com**: paste their URL; optional `calendly users me` / `calcom profile me`.
-
-Do not introduce a booking product they did not set.
+Calendar links belong in **replies**, not email 1. Scheduler is whatever intake wrote. For Calendly, Cal.com, and topcal: list event types, fetch slots, ask, then book (playbook 06). Do not introduce a product they did not set.
