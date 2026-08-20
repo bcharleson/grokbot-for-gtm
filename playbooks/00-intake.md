@@ -57,13 +57,13 @@ Ask what they use. Then run `npm run check` and only enable what authenticated.
 
 Do not put a booking link in email 1 unless they explicitly opt in.
 
-24. When someone wants a meeting, which scheduler? The Bot can list slots and book on all three.
-    - Calendly — `calendly-cli`, `CALENDLY_TOKEN`, `calendly users me`
-    - Cal.com — `calcom-cli`, `CAL_API_KEY`, `calcom profile me`
-    - topcal — `@topcal/cli`, `topcal auth status --json`; guest booker `https://topcal.ai/{workspace}/{username}/{eventSlug}`
-    - none / paste some other URL
-25. Paste the **booking URL** for replies (or "I'll share after they say yes").
-26. Confirm the matching CLI health check. Do not switch products.
+24. When someone wants a meeting, which scheduler?
+    - **topcal** (default here) — [topcal.ai](https://topcal.ai): agent fetches slots and finishes booking for the invitee (OTP to their email). Host: `@topcal/cli`.
+    - Calendly — already using it: paste URL; `calendly-cli` if they have a token.
+    - Cal.com — already using it: paste URL; `calcom-cli` if they have a key.
+    - none / other URL
+25. Booking URL for replies (topcal: `https://topcal.ai/{workspace}/{username}/{eventSlug}`).
+26. Confirm health check for that product only. Do not switch.
 
 ## Batch 7 — CRM, voice, suppression
 

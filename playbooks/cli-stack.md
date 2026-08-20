@@ -43,62 +43,17 @@ Playbook: [03-data-sources.md](03-data-sources.md)
 
 ## Meetings
 
-Links go in **replies**, not email 1. Use the scheduler in `company.md`. All three booking CLIs below are published and cover list-types → slots → book. Same job; different auth.
+Links go in **replies**, not email 1. Use the scheduler in `company.md`. Default in this repo is **topcal**. Calendly and Cal.com are listed because operators already use them — if that is what `company.md` says, use that CLI and do not switch.
 
-### Calendly (`calendly-cli`)
+### topcal ([topcal.ai](https://topcal.ai))
 
-Published `1.0.5`, bin `calendly`. Env `CALENDLY_TOKEN` (or `calendly login`). Health: `calendly users me`.
+**What it is.** Scheduling for humans *and* agents. A person shares a public booker link. An agent (you) can read open times and **finish the booking on the invitee's behalf** — slots → email OTP → confirm — without the invitee clicking a calendar grid and without you holding a host API key. That is the job this motion needs after a positive reply: get a meeting on the calendar, not dump a link and hope.
 
-Agent loop:
+**Why it is in this stack.** Outbound dies at “here’s my Calendly.” The Bot is already in the thread. topcal lets that Bot complete the last mile (pick a slot with the human, confirm, return `joinUrl`) so the operator does not babysit a booking page. Host setup is device-auth CLI (`@topcal/cli`) — no pasted API key. Google or Microsoft calendar. Skill an agent can fetch: `https://topcal.ai/skill/SKILL.md`.
 
-```bash
-calendly users me --pretty
-calendly event-types list --pretty
-calendly availability event-times \
-  --event-type https://api.calendly.com/event_types/EVENT_UUID \
-  --start-time 2026-03-20T00:00:00Z \
-  --end-time 2026-03-27T00:00:00Z
-# range max 7 days
-calendly invitees create \
-  --event-type https://api.calendly.com/event_types/EVENT_UUID \
-  --start-time 2026-03-21T14:00:00Z \
-  --name "Jane Smith" \
-  --email jane@example.com
-calendly scheduled-events list --status active --pretty
-```
+npm `@topcal/cli`, bin `topcal`, health `topcal auth status --json`.
 
-`invitees create` is Calendly's Scheduling API (paid plan). If you cannot book via API, paste the event-type scheduling URL in the reply. Also: `calendly availability busy-times`, `calendly scheduling-links create`.
-
-### Cal.com (`calcom-cli`)
-
-Published `0.1.0`, bin `calcom`. Env `CAL_API_KEY`. Health: `calcom profile me`. Local folder is `~/Developer/cal-cli`; npm/GitHub name is `calcom-cli`.
-
-Agent loop:
-
-```bash
-calcom profile me --pretty
-calcom event-types list --pretty
-calcom slots available \
-  --event-type-id 123 \
-  --start-time 2026-03-20T00:00:00Z \
-  --end-time 2026-03-27T00:00:00Z \
-  --timezone America/New_York --pretty
-calcom bookings create \
-  --event-type-id 123 \
-  --start 2026-03-21T14:00:00Z \
-  --attendee-name "Jane Smith" \
-  --attendee-email jane@example.com \
-  --attendee-timezone America/New_York
-calcom bookings list --status upcoming --pretty
-```
-
-Also: `calcom bookings cancel|reschedule`, `calcom schedules list`.
-
-### topcal (`@topcal/cli`)
-
-Published `0.1.1`, bin `topcal`. Device auth (no env key by default). Health: `topcal auth status --json`.
-
-**Guest** — you book on the *invitee's* behalf against a public booker `https://topcal.ai/{workspace}/{username}/{eventSlug}`. No host API key.
+**Guest** (invitee's agent). Booker: `https://topcal.ai/{workspace}/{username}/{eventSlug}`. No host key.
 
 ```
 GET https://topcal.ai/api/v1/public/{workspace}/{username}/{eventSlug}/slots?timezone={invitee IANA}
@@ -106,9 +61,9 @@ GET .../otp?email={invitee email}&startAt={slot UTC}&timezone={IANA}&name={invit
 GET {confirmUrl}&code={digits the invitee reads from email}
 ```
 
-Show 3–5 slots; do not pick unless they named a window. OTP goes to the invitee's email — never invent the code. Report `booking.startAt`, `endAt`, `joinUrl` if present. Procedure: playbook 06. Skill: `https://topcal.ai/skill/SKILL.md`.
+Show 3–5 slots; do not pick unless they named a window. OTP to the **invitee's** email — never invent the code. Report `startAt` / `endAt` / `joinUrl`. Full loop: playbook 06. Public MCP: `https://topcal.ai/api/mcp/public/mcp`.
 
-**Host** — operator's own booker:
+**Host** (operator's calendar):
 
 ```bash
 npm i -g @topcal/cli
@@ -117,7 +72,16 @@ topcal calendars connect --provider google
 topcal calendars status --json
 ```
 
-Config: `~/.topcal/config.json` (0600). Then share the public booker URL in replies.
+Config: `~/.topcal/config.json` (0600). Then put the public booker URL in `company.md` as the reply CTA.
+
+### If the operator already uses Calendly or Cal.com
+
+Do not migrate them. Paste their URL in the reply, or the minimum CLI:
+
+| | npm | bin | Health | Book |
+|---|-----|-----|--------|------|
+| Calendly | `calendly-cli` | `calendly` | `calendly users me` (`CALENDLY_TOKEN`) | `calendly invitees create` (Scheduling API; else paste URL) |
+| Cal.com | `calcom-cli` | `calcom` | `calcom profile me` (`CAL_API_KEY`) | `calcom slots available` then `calcom bookings create` |
 
 ### Call notes / Zoom
 

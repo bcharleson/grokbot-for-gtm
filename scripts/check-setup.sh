@@ -80,9 +80,9 @@ fi
 
 say ""
 say "Meetings / CRM (optional)"
+probe_cli topcal "@topcal/cli"
 probe_cli calendly calendly-cli
 probe_cli calcom calcom-cli
-probe_cli topcal "@topcal/cli"
 probe_cli hubspot hubspot-cli
 probe_cli attio attio-agent-cli
 probe_cli bison emailbison-cli

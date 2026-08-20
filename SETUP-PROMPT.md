@@ -18,7 +18,7 @@ Do this, in order, and stop if a step fails:
 4. Read `company.md` back in bullets. Wait until I say it is correct.
 5. Then `playbooks/00-prerequisites.md` for channel health (Instantly / HeyReach).
 6. If I have no list yet, `playbooks/03-data-sources.md` — only the source I named. Ask before enrich credits.
-7. Meetings: use only the scheduler I named (Calendly, Cal.com, or topcal). Fetch slots and book via that CLI, or put the booking URL in the **reply**, never email 1.
+7. Meetings: prefer topcal (you can fetch slots and complete booking for the invitee). If I named Calendly or Cal.com, use that URL instead. Booking in the **reply**, never email 1.
 8. Do not activate Instantly or start HeyReach until I say so. Do not send live replies until I say so.
 
 Prefer CLI JSON over screenshots. Skills live under `.grok/skills/`.

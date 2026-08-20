@@ -25,44 +25,25 @@ heyreach inbox list --seen false --pretty
 
 Do not argue. Do not add new claims. If they asked for a meeting, put the **booking URL from `company.md`** in the reply — not in the original sequence.
 
-Use **only** the scheduler in `company.md`. Do not switch products. All three CLIs can list types, fetch slots, and book. Show 3–5 times; ask; then book. If API book is not allowed, paste the URL from `company.md`.
+Use **only** the scheduler in `company.md`. Default in this motion is topcal (agent can finish the booking in-thread). If they named Calendly or Cal.com, stay on that product.
 
-### Calendly
+### topcal (default)
 
-```bash
-calendly users me --pretty
-calendly event-types list --pretty
-calendly availability event-times --event-type EVENT_URI --start-time ISO --end-time ISO
-# event-times range max 7 days
-calendly invitees create --event-type EVENT_URI --start-time ISO --name "…" --email invitee@…
-```
+[topcal.ai](https://topcal.ai) is agent-native scheduling: the operator shares a booker; **you** read times and complete the booking for the invitee so the meeting lands without anyone clicking a grid. That is the last mile after an interested reply.
 
-`invitees create` needs Calendly Scheduling API (paid). Fallback: their scheduling URL in the reply.
+Guest — public booker `https://topcal.ai/{workspace}/{username}/{eventSlug}`, no host key:
 
-### Cal.com
+1. `GET .../slots?timezone={invitee IANA}`
+2. Show 3–5 slots; ask which one.
+3. OTP to the **invitee's** email: `GET .../otp?email=…&startAt=…&timezone=…&name=…` — use `confirmUrl`; never invent the code.
+4. `GET {confirmUrl}&code={digits they read back}`
+5. Log `startAt` / `endAt` / `joinUrl`.
 
-```bash
-calcom profile me --pretty
-calcom event-types list --pretty
-calcom slots available --event-type-id ID --start-time ISO --end-time ISO --timezone IANA --pretty
-calcom bookings create --event-type-id ID --start ISO \
-  --attendee-name "…" --attendee-email invitee@… --attendee-timezone IANA
-```
+If they only want a link, paste the booker URL. Host CLI: `topcal auth status --json`. Setup: `topcal auth register --wait auto` then `topcal calendars connect`. Skill: `https://topcal.ai/skill/SKILL.md`. Stack: [cli-stack.md](cli-stack.md).
 
-### topcal
+### Calendly or Cal.com (if that is what they already use)
 
-Guest (invitee's agent, public booker, no host key):
-
-1. Booking URL shape: `https://topcal.ai/{workspace}/{username}/{eventSlug}`
-2. `GET https://topcal.ai/api/v1/public/{workspace}/{username}/{eventSlug}/slots?timezone={invitee IANA}`
-3. Ask which slot.
-4. OTP to the **invitee's** email: `GET .../otp?email=…&startAt=…&timezone=…&name=…` — use `confirmUrl`; never invent the code.
-5. `GET {confirmUrl}&code={digits they read back}`
-6. Log `startAt` / `endAt` / `joinUrl`.
-
-Host (operator's calendar): `topcal auth status --json`. Setup: `topcal auth register --wait auto` then `topcal calendars connect`. Skill: `https://topcal.ai/skill/SKILL.md`.
-
-Bins, env, extra commands: [cli-stack.md](cli-stack.md).
+Paste the booking URL from `company.md`. Optional: `calendly users me` / `calcom profile me`. Do not run the topcal OTP flow on those products.
 
 ## Send
 
