@@ -1,0 +1,16 @@
+[
+  {
+    "email": "alex.rivera@example.com",
+    "first_name": "Alex",
+    "last_name": "Rivera",
+    "company_name": "Example Heating Co",
+    "website": "https://example.com"
+  },
+  {
+    "email": "sam.cho@example.org",
+    "first_name": "Sam",
+    "last_name": "Cho",
+    "company_name": "Example Plumbing LLC",
+    "website": "https://example.org"
+  }
+]

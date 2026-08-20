@@ -1,0 +1,16 @@
+[
+  {
+    "firstName": "Alex",
+    "lastName": "Rivera",
+    "profileUrl": "https://www.linkedin.com/in/example",
+    "companyName": "Example Heating Co",
+    "position": "VP Operations"
+  },
+  {
+    "firstName": "Sam",
+    "lastName": "Cho",
+    "profileUrl": "https://www.linkedin.com/in/example-sam",
+    "companyName": "Example Plumbing LLC",
+    "position": "Owner"
+  }
+]

@@ -1,0 +1,34 @@
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+
+# Operator-specific GTM context (copy from company.example.md)
+company.md
+
+# Local lists, campaign IDs, exports
+data/
+lists/
+exports/
+*.csv
+!examples/*.csv
+*.xlsx
+
+# Tooling caches
+node_modules/
+.instantly/
+.heyreach/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+*.swp
+*~
+
+dist/
+coverage/
+tmp/
+temp/

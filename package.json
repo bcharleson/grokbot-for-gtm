@@ -1,0 +1,30 @@
+{
+  "name": "grokbot-for-gtm",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Open-source Grok Bot playbook for running a complete outbound GTM motion with Instantly and HeyReach CLIs.",
+  "scripts": {
+    "check": "bash scripts/check-setup.sh",
+    "instantly": "instantly",
+    "heyreach": "heyreach"
+  },
+  "keywords": [
+    "grok-bot",
+    "gtm",
+    "outbound",
+    "cold-email",
+    "linkedin",
+    "instantly",
+    "heyreach",
+    "ai-agents"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "heyreach-cli": "^0.2.2",
+    "instantly-cli": "^0.1.22"
+  }
+}
